@@ -1,9 +1,9 @@
 import unittest
 
 import settings
-from push import push
-from push import strategy
-from push import statistics
+from notification import push
+from notification import strategy
+from notification import statistics
 import logging
 
 

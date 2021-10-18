@@ -10,3 +10,11 @@ push:
   admin: "admin@example.com"
   admin_pass: "password"
   user: "user@example.com"
+
+email:
+  enable: false
+  sender: ""
+  target: "1243288856@qq.com"
+  passcode: "linjiaqin12306"
+  host: "smtp.163.com"
+  port: 465

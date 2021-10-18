@@ -2,6 +2,7 @@
 import yaml
 import os
 
+config = None
 
 def init():
     global config

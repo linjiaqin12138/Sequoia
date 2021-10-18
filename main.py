@@ -12,17 +12,19 @@ def job():
     if utils.is_weekday():
         work_flow.process()
 
+try:
+    logging.basicConfig(format='%(asctime)s %(message)s', filename='sequoia.log')
+    logging.getLogger().setLevel(logging.INFO)
+    settings.init()
 
-logging.basicConfig(format='%(asctime)s %(message)s', filename='sequoia.log')
-logging.getLogger().setLevel(logging.INFO)
-settings.init()
+    if settings.config['cron']:
+        EXEC_TIME = "15:15"
+        schedule.every().day.at(EXEC_TIME).do(job)
 
-if settings.config['cron']:
-    EXEC_TIME = "15:15"
-    schedule.every().day.at(EXEC_TIME).do(job)
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-else:
-    work_flow.process()
+        while True:
+            schedule.run_pending()
+            time.sleep(1)
+    else:
+        work_flow.process()
+except KeyboardInterrupt as e:
+    os.exit()
